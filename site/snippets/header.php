@@ -22,7 +22,7 @@
     <meta property="og:description" content="<?= $page->main_content()->excerpt(200); ?>">
   <?php endif; ?>
 
-  <?= css(['assets/main.css', '@auto']);?>
+  <?= css(['assets/fonts/stylesheet.css','assets/main.css', '@auto']);?>
   <!-- <?= js(['assets/main.js', '@auto']); ?> -->
 
   <!-- Global site tag (gtag.js) - Google Analytics -->

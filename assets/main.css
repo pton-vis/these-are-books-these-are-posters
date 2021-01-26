@@ -11,7 +11,7 @@
   --column-count: 10;
   --column-count--mobile: 4;
 
-  --font-family: 'Monti Sans', sans-serif;
+  --font-family: 'ms', sans-serif;
 }
 
 @media screen and (max-width: 768px) {
