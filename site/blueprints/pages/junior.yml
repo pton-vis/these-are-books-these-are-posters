@@ -1,0 +1,33 @@
+title: Junior
+icon: template
+preset: page
+
+fields:
+  hero_image:
+    type: files
+    max: 1
+    label: Hero Image
+  show_content:
+    type: toggle
+    label: PDF or Content?
+    text:
+      - PDF
+      - Content
+  main_pdf:
+    type: files
+    label: PDF
+    max: 1
+    when:
+      show_content: false
+  main_content:
+    when:
+      show_content: true
+    label: Content
+    type: blocks
+    fieldsets:
+      - text
+      - markdown
+      - gallery
+      - image
+      - video
+      - localvideo

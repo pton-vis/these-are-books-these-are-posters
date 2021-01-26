@@ -1,0 +1,138 @@
+<div style="float: left">
+    <video muted autoplay loop id="blue-twill" height="100%" onclick="randomize()" onfocus="randomize()" style="position: absolute; left: 20%; display: none; z-index: -1">
+        <source src="comps/blue twill.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <video muted autoplay loop id="blue-line" height="100%" onclick="randomize()" onfocus="randomize()" style="position: absolute; left: 20%; display: none; z-index: -1">
+        <source src="comps/blue line.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <video muted autoplay loop id="red-twill" height="100%" onclick="randomize()" onfocus="randomize()" style="position: absolute; left: 20%; display: none; z-index: -1">
+        <source src="comps/red twill.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <video muted autoplay loop id="red-line" height="100%" onclick="randomize()" onfocus="randomize()" style="position: absolute; left: 20%; display: none; z-index: -1">
+        <source src="comps/red line.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <video muted autoplay loop id="line" height="100%" onclick="randomize()" onfocus="randomize()" style="position: absolute; left: 20%; display: none; z-index: -1">
+        <source src="comps/line.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <img src="comps/comp twill.png" id="twill-still" height="100%" onclick="randomize()" onfocus="randomize()" style="position: absolute; left: 20%; display: none; z-index: -1"></img>
+
+    <img src="comps/comp line.png" id="line-still" height="100%" onclick="randomize()" onfocus="randomize()" style="position: absolute; left: 20%; display: none; z-index: -1"></img>
+
+    <video muted autoplay loop id="twill" height="100%" onclick="randomize()" onfocus="randomize()" style="position: absolute; left: 20%; z-index: -1">
+        <source src="comps/twill.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <img src="comps/gen annotation.png" style="display: none; position: absolute; left: 20%; z-index: 100" onclick="randomize()" onfocus="randomize()" id="gen-a" height="100%"></img>
+
+    <img src="comps/line annotation.png" style="display: none; position: absolute; left: 20%; z-index: 100" onclick="randomize()" onfocus="randomize()" id="line-a" height="100%"></img>
+
+    <img src="comps/twill annotation.png" style="display: none; position: absolute; left: 20%; z-index: 100" onclick="randomize()" onfocus="randomize()" id="twill-a" height="100%"></img>
+
+    <img src="comps/line explanation.png" style="display: none; position: absolute; left: 20%; z-index: 100" onclick="randomize()" onfocus="randomize()" id="line-e" height="100%"></img>
+
+    <img src="comps/twill explanation.png" style="display: none; position: absolute; left: 20%; z-index: 100" onclick="randomize()" onfocus="randomize()" id="twill-e" height="100%"></img>
+
+    <img src="comps/transparent.png" style="position: absolute; left: 20%; z-index: 200" onclick="randomize()" onfocus="randomize()" height="100%"></img>
+</div>
+<div style="float: right; text-align: right; position: relative; top: 70%; right: 5%">
+    electoral flag<span style="color: blue" onclick="toggle_key()">s</span><br>
+    ilene e
+</div>
+
+<script>
+    var key = false;
+    var blue_twill = document.getElementById("blue-twill");
+    var red_twill = document.getElementById("red-twill");
+    var blue_line = document.getElementById("blue-line");
+    var red_line = document.getElementById("red-line");
+    var twill = document.getElementById("twill");
+    var line = document.getElementById("line");
+    var twill_still = document.getElementById("twill-still");
+    var line_still = document.getElementById("line-still");
+
+    var flags = [blue_twill, red_twill, twill, twill_still, line, blue_line, red_line, line_still];
+
+    var gen_a = document.getElementById("gen-a");
+    var line_a = document.getElementById("line-a");
+    var line_e = document.getElementById("line-e");
+    var twill_a = document.getElementById("twill-a");
+    var twill_e = document.getElementById("twill-e");
+
+    var keys = [gen_a, twill_a, twill_e, line_a, line_e];
+
+    function randomize() {
+        console.log('randomize');
+        if (key) {
+            for (let i = 0; i < keys.length; i++) {
+                keys[i].style.display = "none";
+            }
+            key = false;
+        }
+
+        let rand_ind = Math.floor(Math.random()*flags.length);
+        
+        for (let i = 0; i < flags.length; i++) {
+            if (i == rand_ind) {
+                flags[i].style.display = "block";
+                flags[i].style.textAlign = "center";
+            }
+            else {
+                flags[i].style.display = "none";
+            }
+        }
+    }
+
+    function toggle_key() {
+        console.log('toggle');
+        if (key) {
+            for (let i = 0; i < keys.length; i++) {
+                keys[i].style.display = "none";
+            }
+            key = false;
+        }
+        else {
+            key = true;
+            let rand_ind = Math.floor(Math.random()*3);
+            console.log(rand_ind);
+            if (rand_ind == 0) {
+                keys[0].style.display = "block";
+            }
+            else {
+                let flag_ind = -1;
+                for (let i = 0; i < flags.length; i++) {
+                    if (flags[i].style.display != "none") {
+                        flag_ind = i;
+                        console.log(flag_ind);
+                    }
+                }
+                if (rand_ind == 1) {
+                    if (flag_ind < flags.length / 2) {
+                        keys[1].style.display = "block";
+                    }
+                    else {
+                        keys[3].style.display = "block";
+                    }
+                }
+                else {
+                    if (flag_ind < flags.length / 2) {
+                        keys[2].style.display = "block";
+                    }
+                    else {
+                        keys[4].style.display = "block";
+                    }
+                }
+            }
+        }
+    }
+</script>

@@ -1,0 +1,42 @@
+title: Senior
+icon: template
+preset: page
+
+fields:
+  show_title:
+    type: text
+    label: Show Title
+  hero_image:
+    type: files
+    max: 1
+    label: Hero Image
+  show_content:
+    type: toggle
+    label: URL or Content?
+    text:
+      - URL
+      - Content
+  main_url:
+    type: text
+    label: URL
+    width: 3/4
+    when:
+      show_content: false
+  local_url:
+    type: toggle
+    label: Local URL
+    width: 1/4
+    when:
+      show_content: false
+  main_content:
+    when:
+      show_content: true
+    label: Content
+    type: blocks
+    fieldsets:
+      - text
+      - markdown
+      - gallery
+      - image
+      - video
+      - localvideo
